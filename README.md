@@ -8,4 +8,4 @@ This Morse Code Converter App allows you to easily convert text to Morse code an
 
 - Convert text to Morse code
 - Copy converted text to clipboard
-- Clear input and output fields with a single click
+- hosted through netlify click 2 check it out! [https://convert2morse.netlify.app/](https://convert2morse.netlify.app/)
