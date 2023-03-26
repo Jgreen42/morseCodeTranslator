@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Morse Code Converter</title>
+    <style>
+      body {
+        background-color: #0f0f0f;
+        color: #00ff00;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      
+      h1 {
+        font-size: 3em;
+        text-transform: uppercase;
+        letter-spacing: 0.5em;
+        margin: 0;
+      }
+      
+      p {
+        font-size: 1.5em;
+        margin: 20px 0 5px 0;
+      }
+      
+      input[type=text] {
+        background-color: transparent;
+        border: none;
+        border-bottom: 2px solid #00ff00;
+        color: #00ff00;
+        font-size: 1.5em;
+        padding: 5px;
+        margin: 5px 0;
+        text-align: center;
+        width: 80%;
+        outline: none;
+      }
+      
+      input[type=text]:focus {
+        border-bottom: 2px solid #00bfff;
+      }
+      
+      button {
+        background-color: #00ff00;
+        border: none;
+        color: #0f0f0f;
+        font-size: 1.5em;
+        padding: 10px 20px;
+        margin: 10px 0;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      
+      button:hover {
+        background-color: #00bfff;
+      }
+      
+      #output {
+        font-size: 2em;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Morse Code Converter</h1>
+    <p>Enter a message:</p>
+    <input type="text" id="message-input">
+    <button id="convert-button">Convert to Morse Code</button>
+    <p id="output"></p>
+    
+    <script>
+      class MorseCode {
+        constructor() {
+          this.morseCode = {
+            "a": "._",
+            "b": "_...",
+            "c": "_._.",
+            "d": "_..",
+            "e": ".",
+            "f": ".._.",
+            "g": "__.",
+            "h": "....",
+            "i": "..",
+            "j": ".___",
+            "k": "_._",
+            "l": "._..",
+            "m": "__",
+            "n": "_.",
+            "o": "___",
+            "p": ".__.",
+            "q": "__._",
+            "r": "._.",
+            "s": "...",
+            "t": "_",
+            "u": ".._",
+            "v": "..._",
+            "w": ".__",
+            "x": "_.._",
+            "y": "_.__",
+            "z": "__..",
+            "1": ".____",
+            "2": "..___",
+            "3": "...__",
+            "4": "...._",
+            "5": ".....",
+            "6": "_....",
+            "7": "__...",
+            "8": "___..",
+            "9": "____.",
+            "0": "_____"
+          };
+        }
+        
+        convertToMorse(text) {
+          let result = "";
+          for (let i = 0; i < text.length; i++) {
+            let letter = text[i].toLowerCase();
+            if (letter in this.morseCode) {
+              result += this.morseCode[letter] + " ";
+            } else {
+              result += "  ";
+            }
+          }
+          return result.trim();
+        }
+      }
+      
+      let morseCode = new MorseCode();
+      let convertButton = document.getElementById("convert-button");
+      convertButton.addEventListener("click", function() {
+        let messageInput = document.getElementById("message-input");
+        let text = messageInput.value;
+        let converted = morseCode.convertToMorse(text);
+        let output = document.getElementById("output");
+        output.innerHTML = converted;
+      });
+
+      
+    </script>
+  </body>
+</html>
